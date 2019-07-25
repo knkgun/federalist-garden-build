@@ -36,7 +36,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | b
 ENV RUBY_VERSION 2.3
 RUN gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
   && \curl -sSL https://get.rvm.io | bash -s stable \
-  && /bin/bash -l -c 'rvm install $RUBY_VERSION && rvm use --default $RUBY_VERSION' \
+  && rvm use --default $RUBY_VERSION' \
   && echo rvm_silence_path_mismatch_check_flag=1 >> /etc/rvmrc \
   && echo 'install: --no-document\nupdate: --no-document' >> "/etc/.gemrc"
 
