@@ -140,7 +140,7 @@ def setup_ruby(ctx):
     Sets up RVM and installs ruby
     Uses the ruby version specified in .ruby-version if present
     '''
-    ruby_version = '2.3.1'
+    ruby_version = '2.3.8'
     with ctx.prefix(f'source {RVM_PATH}'):
         RUBY_VERSION_PATH = CLONE_DIR_PATH / RUBY_VERSION
         if RUBY_VERSION_PATH.is_file():
