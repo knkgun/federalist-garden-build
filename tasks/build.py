@@ -140,6 +140,7 @@ def setup_ruby(ctx):
     Sets up RVM and installs ruby
     Uses the ruby version specified in .ruby-version if present
     '''
+    ruby_version = '2.3.1'
     with ctx.prefix(f'source {RVM_PATH}'):
         RUBY_VERSION_PATH = CLONE_DIR_PATH / RUBY_VERSION
         if RUBY_VERSION_PATH.is_file():
@@ -149,9 +150,9 @@ def setup_ruby(ctx):
                 # escape-quote the value in case there's anything weird
                 # in the .ruby-version file
                 ruby_version = shlex.quote(ruby_version)
-            if ruby_version:
-                LOGGER.info('Using ruby version in .ruby-version')
-                ctx.run(f'rvm install {ruby_version}')
+
+        LOGGER.info('Using ruby version in .ruby-version')
+        ctx.run(f'rvm install {ruby_version}')
 
         ruby_ver_res = ctx.run('ruby -v')
         LOGGER.info(f'Ruby version: {ruby_ver_res.stdout}')
